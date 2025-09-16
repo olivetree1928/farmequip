@@ -1,5 +1,6 @@
 import React from 'react';
 import { Search, Menu } from 'lucide-react';
+import BaiduAnalytics from './BaiduAnalytics';
 
 interface HeaderProps {
   searchQuery: string;
@@ -8,7 +9,11 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ searchQuery, onSearchChange }) => {
   return (
-    <header className="bg-white shadow-lg border-b-4 border-green-500">
+    <>
+      {/* 百度统计 - 全站统计 */}
+      <BaiduAnalytics />
+      
+      <header className="bg-white shadow-lg border-b-4 border-green-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center space-x-3">
@@ -42,6 +47,7 @@ const Header: React.FC<HeaderProps> = ({ searchQuery, onSearchChange }) => {
         </div>
       </div>
     </header>
+    </>
   );
 };
 

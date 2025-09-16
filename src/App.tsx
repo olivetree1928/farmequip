@@ -4,6 +4,7 @@ import CategoryFilter from './components/CategoryFilter';
 import EquipmentGrid from './components/EquipmentGrid';
 import Stats from './components/Stats';
 import { equipment, categories } from './data/equipmentData';
+import { trackSearch, trackCategoryFilter } from './utils/analytics';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -29,7 +30,7 @@ function App() {
   }, []);
 
   const filteredEquipment = useMemo(() => {
-    return equipment.filter((item) => {
+    const filtered = equipment.filter((item) => {
       const matchesSearch = searchQuery === '' ||
         item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -39,7 +40,20 @@ function App() {
 
       return matchesSearch && matchesCategory;
     });
+
+    // 发送搜索统计
+    if (searchQuery) {
+      trackSearch(searchQuery, filtered.length);
+    }
+
+    return filtered;
   }, [searchQuery, selectedCategory]);
+
+  // 分类筛选统计
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+    trackCategoryFilter(category);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -54,7 +68,7 @@ function App() {
         <CategoryFilter
           categories={categories}
           selectedCategory={selectedCategory}
-          onCategoryChange={setSelectedCategory}
+          onCategoryChange={handleCategoryChange}
         />
 
         <EquipmentGrid equipment={filteredEquipment} />

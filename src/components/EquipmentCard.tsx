@@ -3,6 +3,7 @@ import { ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
 import { Equipment } from '../types/equipment';
 import ImageModal from './ImageModal';
 import OptimizedImage from './OptimizedImage';
+import { trackEquipmentClick } from '../utils/analytics';
 
 interface EquipmentCardProps {
   equipment: Equipment;
@@ -13,6 +14,12 @@ const EquipmentCard: React.FC<EquipmentCardProps> = ({ equipment }) => {
   const [technicalExpanded, setTechnicalExpanded] = useState(false);
   const [imageModalOpen, setImageModalOpen] = useState(false);
 
+  // 处理图片点击统计
+  const handleImageClick = () => {
+    trackEquipmentClick(equipment.name, equipment.category);
+    setImageModalOpen(true);
+  };
+
   return (
     <>
       <div className="equipment-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
@@ -21,10 +28,10 @@ const EquipmentCard: React.FC<EquipmentCardProps> = ({ equipment }) => {
             src={equipment.image}
             alt={equipment.name}
             className="w-full h-full cursor-pointer hover:opacity-90 transition-opacity"
-            onClick={() => setImageModalOpen(true)}
+            onClick={handleImageClick}
           />
           <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all cursor-pointer flex items-center justify-center"
-               onClick={() => setImageModalOpen(true)}>
+               onClick={handleImageClick}>
             <div className="opacity-0 hover:opacity-100 transition-opacity bg-white bg-opacity-90 rounded-full p-2">
               <span className="text-gray-700 text-sm font-medium">Click to enlarge</span>
             </div>
