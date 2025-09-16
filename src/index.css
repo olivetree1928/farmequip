@@ -1,3 +1,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 图片优化 */
+img {
+  /* 启用硬件加速 */
+  transform: translateZ(0);
+  /* 优化图片渲染 */
+  image-rendering: optimizeQuality;
+  /* 防止图片拖拽 */
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* 懒加载动画 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* 优化滚动性能 */
+* {
+  scroll-behavior: smooth;
+}
+
+/* 针对大图片的优化 */
+.equipment-image {
+  /* 限制最大显示尺寸以减少内存使用 */
+  max-width: 100%;
+  height: auto;
+  /* 优化图片缩放质量 */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* 加载状态优化 */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}

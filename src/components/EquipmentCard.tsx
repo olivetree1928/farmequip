@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
 import { Equipment } from '../types/equipment';
 import ImageModal from './ImageModal';
+import OptimizedImage from './OptimizedImage';
 
 interface EquipmentCardProps {
   equipment: Equipment;
@@ -16,10 +17,10 @@ const EquipmentCard: React.FC<EquipmentCardProps> = ({ equipment }) => {
     <>
       <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
         <div className="relative">
-          <img
+          <OptimizedImage
             src={equipment.image}
             alt={equipment.name}
-            className="w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+            className="w-full h-48 cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => setImageModalOpen(true)}
           />
           <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all cursor-pointer flex items-center justify-center"
