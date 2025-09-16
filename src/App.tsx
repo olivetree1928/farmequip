@@ -7,7 +7,7 @@ import { equipment, categories } from './data/equipmentData';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState('tractors');
 
   const filteredEquipment = useMemo(() => {
     return equipment.filter((item) => {
@@ -16,7 +16,7 @@ function App() {
         item.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.description.toLowerCase().includes(searchQuery.toLowerCase());
 
-      const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
+      const matchesCategory = item.category === selectedCategory;
 
       return matchesSearch && matchesCategory;
     });
