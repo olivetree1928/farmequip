@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Header from './components/Header';
 import CategoryFilter from './components/CategoryFilter';
 import EquipmentGrid from './components/EquipmentGrid';
@@ -8,6 +8,25 @@ import { equipment, categories } from './data/equipmentData';
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('tractors');
+
+  // 预加载前几张图片
+  useEffect(() => {
+    const preloadImages = () => {
+      const firstFewImages = equipment
+        .filter(item => item.category === 'tractors')
+        .slice(0, 3)
+        .map(item => item.image);
+
+      firstFewImages.forEach(src => {
+        const img = new Image();
+        img.src = src;
+      });
+    };
+
+    // 延迟预加载以不影响主要内容加载
+    const timer = setTimeout(preloadImages, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const filteredEquipment = useMemo(() => {
     return equipment.filter((item) => {

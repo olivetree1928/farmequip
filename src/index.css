@@ -2,50 +2,104 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 图片优化 */
-img {
-  /* 启用硬件加速 */
-  transform: translateZ(0);
-  /* 优化图片渲染 */
-  image-rendering: optimizeQuality;
-  /* 防止图片拖拽 */
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-/* 懒加载动画 */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.fade-in {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-/* 优化滚动性能 */
+/* 全局性能优化 */
 * {
   scroll-behavior: smooth;
 }
 
-/* 针对大图片的优化 */
-.equipment-image {
-  /* 限制最大显示尺寸以减少内存使用 */
-  max-width: 100%;
-  height: auto;
-  /* 优化图片缩放质量 */
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
+/* 图片性能优化 */
+img {
+  /* 启用硬件加速 */
+  transform: translateZ(0);
+  /* 优化图片渲染 */
+  image-rendering: auto;
+  /* 防止图片拖拽 */
+  user-select: none;
+  -webkit-user-drag: none;
+  /* 强制GPU加速 */
+  will-change: transform;
+  /* 减少重绘 */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
-/* 加载状态优化 */
+/* 容器级别的优化 */
+.equipment-card {
+  /* 启用硬件加速 */
+  transform: translateZ(0);
+  /* 优化合成层 */
+  will-change: transform;
+  /* 减少重绘 */
+  contain: layout style paint;
+}
+
+/* 懒加载动画优化 */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* 更高效的加载动画 */
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.6; }
+}
+
+.loading-pulse {
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+/* 优化的shimmer效果 */
 .loading-shimmer {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(
+    90deg,
+    rgba(240, 240, 240, 0.8) 25%,
+    rgba(224, 224, 224, 0.9) 50%,
+    rgba(240, 240, 240, 0.8) 75%
+  );
   background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
+  animation: shimmer 2s ease-in-out infinite;
 }
 
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
+}
+
+/* 减少重排和重绘 */
+.grid-container {
+  contain: layout;
+}
+
+.card-image-container {
+  /* 固定高度避免布局抖动 */
+  height: 192px; /* h-48 */
+  /* 优化合成 */
+  will-change: transform;
+  /* 减少重绘 */
+  contain: layout style paint;
+}
+
+/* 内存优化 */
+@media (max-width: 768px) {
+  img {
+    /* 移动设备上更激进的优化 */
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* 预加载关键资源 */
+.preload-hint {
+  content-visibility: auto;
+  contain-intrinsic-size: 300px;
 }
