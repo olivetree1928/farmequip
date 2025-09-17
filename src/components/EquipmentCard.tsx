@@ -3,7 +3,7 @@ import { ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
 import { Equipment } from '../types/equipment';
 import ImageModal from './ImageModal';
 import OptimizedImage from './OptimizedImage';
-import { trackEquipmentClick } from '../utils/analytics';
+import { trackEquipmentClick, trackImageView, trackTechnicalAnalysis } from '../utils/analytics';
 
 interface EquipmentCardProps {
   equipment: Equipment;
@@ -16,8 +16,15 @@ const EquipmentCard: React.FC<EquipmentCardProps> = ({ equipment }) => {
 
   // 处理图片点击统计
   const handleImageClick = () => {
-    trackEquipmentClick(equipment.name, equipment.category);
+    trackImageView(equipment.name, equipment.category);
     setImageModalOpen(true);
+  };
+
+  // 处理技术分析展开/折叠统计
+  const handleTechnicalToggle = () => {
+    const newExpanded = !technicalExpanded;
+    setTechnicalExpanded(newExpanded);
+    trackTechnicalAnalysis(equipment.name, newExpanded);
   };
 
   return (
@@ -89,7 +96,7 @@ const EquipmentCard: React.FC<EquipmentCardProps> = ({ equipment }) => {
         {equipment.technicalAnalysis && (
           <div className="mb-4 p-3 bg-blue-50 rounded-lg">
             <button
-              onClick={() => setTechnicalExpanded(!technicalExpanded)}
+              onClick={handleTechnicalToggle}
               className="w-full flex items-center justify-between text-left"
             >
               <h4 className="text-sm font-semibold text-blue-800">{equipment.technicalAnalysis.title}</h4>

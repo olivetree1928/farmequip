@@ -1,6 +1,6 @@
 import React from 'react';
 import { Search, Menu } from 'lucide-react';
-import BaiduAnalytics from './BaiduAnalytics';
+import GoogleAnalytics from './GoogleAnalytics';
 
 interface HeaderProps {
   searchQuery: string;
@@ -10,8 +10,8 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ searchQuery, onSearchChange }) => {
   return (
     <>
-      {/* 百度统计 - 全站统计 */}
-      <BaiduAnalytics />
+      {/* Google Analytics - 全站统计 */}
+      <GoogleAnalytics />
       
       <header className="bg-white shadow-lg border-b-4 border-green-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
