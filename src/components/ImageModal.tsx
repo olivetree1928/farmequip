@@ -1,5 +1,6 @@
 import React from 'react';
 import { X } from 'lucide-react';
+import { addVersionToImage } from '../utils/imageUtils';
 
 interface ImageModalProps {
   isOpen: boolean;
@@ -37,7 +38,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
           <X className="w-8 h-8" />
         </button>
         <img
-          src={imageSrc}
+          src={addVersionToImage(imageSrc)}
           alt={imageAlt}
           className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
         />

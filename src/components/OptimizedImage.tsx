@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { addVersionToImage } from '../utils/imageUtils';
 
 interface OptimizedImageProps {
   src: string;
@@ -107,7 +108,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       {isInView && !hasError && (
         <img
           ref={imgRef}
-          src={src}
+          src={addVersionToImage(src)}
           alt={alt}
           className={`relative w-full h-full object-cover transition-opacity duration-700 ${
             isLoaded ? 'opacity-100' : 'opacity-0'
