@@ -10,7 +10,16 @@
   ],
   "headers": [
     {
-      "source": "/assets/(.*)",
+      "source": "/assets/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*\\.(js|css))",
       "headers": [
         {
           "key": "Cache-Control",
