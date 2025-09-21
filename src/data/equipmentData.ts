@@ -1,48 +1,6 @@
 import { Equipment, Category } from '../types/equipment';
 
-// 导入所有图片（按设备id顺序对应）
-import johnDeere9620R from './img/John Deere 9620R.png';
-import kubotaM7172 from './img/Kubota M7-172.png';
-import caseIhMagnum380 from './img/Case IH Magnum 380.png';
-import newHollandT9700 from './img/New Holland T9.700.png';
-import masseyFerguson8S265 from './img/MasseyFerguson8S265.png';
-import fendt1050Vario from './img/Fendt 1050 Vario.png';
-import versatile550DT from './img/Versatile 550DT.png';
-import challengerMT775E from './img/Challenger MT775E.png';
-import caseIhAxialFlow9250 from './img/Case IH Axial Flow 9250.png';
-import newHollandCR1090 from './img/New Holland CR10.90.png';
-import johnDeereS790 from './img/John Deere S790.png';
-import claasLexion8900 from './img/Claas Lexion 8900.png';
-import masseyFergusonIDEAL10T from './img/Massey Ferguson IDEAL 10T.png';
-import gleanerS98 from './img/Gleaner S98.png';
-import fendtIDEAL10T from './img/Fendt IDEAL 10T.png';
-import johnDeereDB120 from './img/John Deere DB120.png';
-import caseIh2150EarlyRiser from './img/Case IH 2150 Early Riser.png';
-import kinze4900 from './img/Kinze 4900.png';
-import white9824VE from './img/White 9824VE.png';
-import greatPlainsYP2425A from './img/Great Plains YP2425A.png';
-import precisionPlanting2020 from './img/Precision Planting 2020.png';
-import djiT40 from './img/DJI T40 Agricultural Drone.png';
-import johnDeereR4030 from './img/John Deere R4030.png';
-import caseIhFLX4510 from './img/Case IH FLX4510.png';
-import apacheAS1220 from './img/Apache AS1220.png';
-import hagieSTS16 from './img/Hagie STS16.png';
-import amazoneUX11200 from './img/Amazone UX11200.png';
-import newHollandFLX1240 from './img/New Holland FLX1240.png';
-import millerNitro6365 from './img/Miller Nitro 6365.png';
-import johnDeere2730 from './img/John Deere 2730.png';
-import caseIhTrueTandem345 from './img/Case IH True-Tandem 345.png';
-import kuhnKrauseGladiator1200 from './img/Kuhn Krause Gladiator 1200.png';
-import greatPlainsTurboMax1500 from './img/Great Plains Turbo-Max 1500.png';
-import salfordI2100 from './img/Salford I-2100.png';
-import landoll2310 from './img/Landoll 2310.png';
-import sunflower1435 from './img/Sunflower 1435.png';
-import johnDeere569 from './img/John Deere 569.png';
-import newHollandBigBaler1290 from './img/New Holland BigBaler 1290.png';
-import caseIhRB565 from './img/Case IH RB565.png';
-import masseyFerguson2956A from './img/Massey Ferguson 2956A.png';
-import kuhnLSB1290 from './img/Kuhn LSB1290.png';
-import vermeer605N from './img/Vermeer 605N.png';
+// 使用public目录中的图片路径
 
 export const categories: Category[] = [
   { id: 'tractors', name: 'Tractors', icon: '🚜', count: 8 },
@@ -60,7 +18,7 @@ export const equipment: Equipment[] = [
     name: 'John Deere 9620R',
     brand: 'John Deere',
     category: 'tractors',
-    image: johnDeere9620R,
+    image: '/images/John Deere 9620R.png',
     description: 'Large four-wheel drive tractor designed for large-scale farming operations',
     price: '$485,000',
     parameters: {
@@ -94,7 +52,7 @@ export const equipment: Equipment[] = [
     name: 'Kubota M7-172',
     brand: 'Kubota',
     category: 'tractors',
-    image: kubotaM7172,
+    image: '/images/Kubota M7-172.png',
     description: 'Mid-size versatile tractor suitable for various farm operations',
     price: '$165,000',
     parameters: {
@@ -128,7 +86,7 @@ export const equipment: Equipment[] = [
     name: 'Case IH Magnum 380',
     brand: 'Case IH',
     category: 'tractors',
-    image: caseIhMagnum380,
+    image: '/images/Case IH Magnum 380.png',
     description: 'High-horsepower row crop tractor with advanced CVT transmission',
     price: '$425,000',
     parameters: {
@@ -162,7 +120,7 @@ export const equipment: Equipment[] = [
     name: 'New Holland T9.700',
     brand: 'New Holland',
     category: 'tractors',
-    image: newHollandT9700,
+    image: '/images/New Holland T9.700.png',
     description: 'Four-wheel drive articulated tractor for heavy-duty field work',
     price: '$520,000',
     parameters: {
@@ -193,7 +151,7 @@ export const equipment: Equipment[] = [
     name: 'Massey Ferguson 8S.265',
     brand: 'Massey Ferguson',
     category: 'tractors',
-    image: masseyFerguson8S265,
+    image: '/images/MasseyFerguson8S265.png',
     description: 'Premium row crop tractor with Dyna-VT continuously variable transmission',
     price: '$285,000',
     parameters: {
@@ -224,7 +182,7 @@ export const equipment: Equipment[] = [
     name: 'Fendt 1050 Vario',
     brand: 'Fendt',
     category: 'tractors',
-    image: fendt1050Vario,
+    image: '/images/Fendt 1050 Vario.png',
     description: 'German-engineered high-performance tractor with Vario transmission',
     price: '$650,000',
     parameters: {
@@ -255,7 +213,7 @@ export const equipment: Equipment[] = [
     name: 'Versatile 550DT',
     brand: 'Versatile',
     category: 'tractors',
-    image: versatile550DT,
+    image: '/images/Versatile 550DT.png',
     description: 'Four-wheel drive articulated tractor built for Canadian prairie conditions',
     price: '$475,000',
     parameters: {
@@ -286,7 +244,7 @@ export const equipment: Equipment[] = [
     name: 'Challenger MT775E',
     brand: 'Challenger',
     category: 'tractors',
-    image: challengerMT775E,
+    image: '/images/Challenger MT775E.png',
     description: 'Track tractor with rubber belts for reduced soil compaction',
     price: '$580,000',
     parameters: {
@@ -319,7 +277,7 @@ export const equipment: Equipment[] = [
     name: 'Case IH Axial-Flow 9250',
     brand: 'Case IH',
     category: 'harvesters',
-    image: caseIhAxialFlow9250,
+    image: '/images/Case IH Axial Flow 9250.png',
     description: 'High-efficiency combine harvester with advanced threshing technology',
     price: '$675,000',
     parameters: {
@@ -353,7 +311,7 @@ export const equipment: Equipment[] = [
     name: 'New Holland CR10.90',
     brand: 'New Holland',
     category: 'harvesters',
-    image: newHollandCR1090,
+    image: '/images/New Holland CR10.90.png',
     description: 'Smart combine harvester with advanced monitoring systems',
     price: '$620,000',
     parameters: {
@@ -387,7 +345,7 @@ export const equipment: Equipment[] = [
     name: 'John Deere S790',
     brand: 'John Deere',
     category: 'harvesters',
-    image: johnDeereS790,
+    image: '/images/John Deere S790.png',
     description: 'Premium combine with Active Yield technology and ProDrive transmission',
     price: '$720,000',
     parameters: {
@@ -421,7 +379,7 @@ export const equipment: Equipment[] = [
     name: 'Claas Lexion 8900',
     brand: 'Claas',
     category: 'harvesters',
-    image: claasLexion8900,
+    image: '/images/Claas Lexion 8900.png',
     description: 'European-designed combine with APS Hybrid threshing system',
     price: '$780,000',
     parameters: {
@@ -452,7 +410,7 @@ export const equipment: Equipment[] = [
     name: 'Massey Ferguson IDEAL 10T',
     brand: 'Massey Ferguson',
     category: 'harvesters',
-    image: masseyFergusonIDEAL10T,
+    image: '/images/Massey Ferguson IDEAL 10T.png',
     description: 'Next-generation combine with dual-helix threshing technology',
     price: '$650,000',
     parameters: {
@@ -483,7 +441,7 @@ export const equipment: Equipment[] = [
     name: 'Gleaner S98',
     brand: 'Gleaner',
     category: 'harvesters',
-    image: gleanerS98,
+    image: '/images/Gleaner S98.png',
     description: 'Rotary combine with exclusive Gleaner cleaning system',
     price: '$580,000',
     parameters: {
@@ -514,7 +472,7 @@ export const equipment: Equipment[] = [
     name: 'Fendt IDEAL 10T',
     brand: 'Fendt',
     category: 'harvesters',
-    image: fendtIDEAL10T,
+    image: '/images/Fendt IDEAL 10T.png',
     description: 'German-engineered combine with IDEALharvest technology',
     price: '$695,000',
     parameters: {
@@ -547,7 +505,7 @@ export const equipment: Equipment[] = [
     name: 'John Deere DB120',
     brand: 'John Deere',
     category: 'planters',
-    image: johnDeereDB120,
+    image: '/images/John Deere DB120.png',
     description: 'Precision planter ensuring accurate seed placement',
     price: '$340,000',
     parameters: {
@@ -578,7 +536,7 @@ export const equipment: Equipment[] = [
     name: 'Case IH 2150 Early Riser',
     brand: 'Case IH',
     category: 'planters',
-    image: caseIh2150EarlyRiser,
+    image: '/images/Case IH 2150 Early Riser.png',
     description: 'Strip-till planter with Advanced Seed Delivery system',
     price: '$285,000',
     parameters: {
@@ -609,7 +567,7 @@ export const equipment: Equipment[] = [
     name: 'Kinze 4900',
     brand: 'Kinze',
     category: 'planters',
-    image: kinze4900,
+    image: '/images/Kinze 4900.png',
     description: 'High-speed planter with Blue Drive electric drive system',
     price: '$420,000',
     parameters: {
@@ -640,7 +598,7 @@ export const equipment: Equipment[] = [
     name: 'White 9824VE',
     brand: 'White',
     category: 'planters',
-    image: white9824VE,
+    image: '/images/White 9824VE.png',
     description: 'Variable rate planter with SureSpeed technology',
     price: '$195,000',
     parameters: {
@@ -671,7 +629,7 @@ export const equipment: Equipment[] = [
     name: 'Great Plains YP2425A',
     brand: 'Great Plains',
     category: 'planters',
-    image: greatPlainsYP2425A,
+    image: '/images/Great Plains YP2425A.png',
     description: 'Yield-Pro planter with SmartFirmer technology',
     price: '$225,000',
     parameters: {
@@ -702,7 +660,7 @@ export const equipment: Equipment[] = [
     name: 'Precision Planting 20|20',
     brand: 'Precision Planting',
     category: 'planters',
-    image: precisionPlanting2020,
+    image: '/images/Precision Planting 2020.png',
     description: 'Modular planter system with vSet seed meters',
     price: '$380,000',
     parameters: {
@@ -735,7 +693,7 @@ export const equipment: Equipment[] = [
     name: 'DJI T40 Agricultural Drone',
     brand: 'DJI',
     category: 'sprayers',
-    image: djiT40,
+    image: '/images/DJI T40 Agricultural Drone.png',
     description: 'Smart agricultural drone with precision spraying system and AI recognition technology',
     price: '$15,000',
     parameters: {
@@ -768,7 +726,7 @@ export const equipment: Equipment[] = [
     name: 'John Deere R4030',
     brand: 'John Deere',
     category: 'sprayers',
-    image: johnDeereR4030,
+    image: '/images/John Deere R4030.png',
     description: 'Self-propelled high-clearance sprayer with ExactApply precision application technology',
     price: '$520,000',
     parameters: {
@@ -801,7 +759,7 @@ export const equipment: Equipment[] = [
     name: 'Case IH FLX4510',
     brand: 'Case IH',
     category: 'sprayers',
-    image: caseIhFLX4510,
+    image: '/images/Case IH FLX4510.png',
     description: 'Floater self-propelled sprayer with AIM Command FLEX precision application system',
     price: '$485,000',
     parameters: {
@@ -834,7 +792,7 @@ export const equipment: Equipment[] = [
     name: 'Apache AS1220',
     brand: 'Apache',
     category: 'sprayers',
-    image: apacheAS1220,
+    image: '/images/Apache AS1220 .png',
     description: 'Self-propelled sprayer for large-scale pesticide application',
     price: '$445,000',
     parameters: {
@@ -865,7 +823,7 @@ export const equipment: Equipment[] = [
     name: 'Hagie STS16',
     brand: 'Hagie',
     category: 'sprayers',
-    image: hagieSTS16,
+    image: '/images/Hagie STS16.png',
     description: 'High-clearance self-propelled sprayer designed for tall crops with intelligent spray control',
     price: '$465,000',
     parameters: {
@@ -898,7 +856,7 @@ export const equipment: Equipment[] = [
     name: 'Amazone UX11200',
     brand: 'Amazone',
     category: 'sprayers',
-    image: amazoneUX11200,
+    image: '/images/Amazone UX11200.png',
     description: 'German-imported trailed sprayer with ArgusEco intelligent spray system and GPS navigation',
     price: '$125,000',
     parameters: {
@@ -931,7 +889,7 @@ export const equipment: Equipment[] = [
     name: 'New Holland FLX1240',
     brand: 'New Holland',
     category: 'sprayers',
-    image: newHollandFLX1240,
+    image: '/images/New Holland FLX1240.png',
     description: 'Guardian front boom sprayer with IntelliSpray technology',
     price: '$395,000',
     parameters: {
@@ -964,7 +922,7 @@ export const equipment: Equipment[] = [
     name: 'Miller Nitro 6365',
     brand: 'Miller',
     category: 'sprayers',
-    image: millerNitro6365,
+    image: '/images/Miller Nitro 6365.png',
     description: 'High-clearance sprayer with See & Spray technology for precision application',
     price: '$525,000',
     parameters: {
@@ -999,7 +957,7 @@ export const equipment: Equipment[] = [
     name: 'John Deere 2730',
     brand: 'John Deere',
     category: 'tillers',
-    image: johnDeere2730,
+    image: '/images/John Deere 2730.png',
     description: 'Combination ripper with TruSet technology for precise depth control',
     price: '$185,000',
     parameters: {
@@ -1030,7 +988,7 @@ export const equipment: Equipment[] = [
     name: 'Case IH True-Tandem 345',
     brand: 'Case IH',
     category: 'tillers',
-    image: caseIhTrueTandem345,
+    image: '/images/Case IH True-Tandem 345.png',
     description: 'Tandem disk harrow with wavy coulter blades for superior soil mixing',
     price: '$95,000',
     parameters: {
@@ -1061,7 +1019,7 @@ export const equipment: Equipment[] = [
     name: 'Kuhn Krause Gladiator 1200',
     brand: 'Kuhn Krause',
     category: 'tillers',
-    image: kuhnKrauseGladiator1200,
+    image: '/images/Kuhn Krause Gladiator 1200.png',
     description: 'Strip-till unit with fertilizer placement and residue management',
     price: '$145,000',
     parameters: {
@@ -1092,7 +1050,7 @@ export const equipment: Equipment[] = [
     name: 'Great Plains Turbo-Max 1500',
     brand: 'Great Plains',
     category: 'tillers',
-    image: greatPlainsTurboMax1500,
+    image: '/images/Great Plains Turbo-Max 1500.png',
     description: 'Vertical tillage tool with rolling basket for seedbed preparation',
     price: '$75,000',
     parameters: {
@@ -1123,7 +1081,7 @@ export const equipment: Equipment[] = [
     name: 'Salford I-2100',
     brand: 'Salford',
     category: 'tillers',
-    image: salfordI2100,
+    image: '/images/Salford I-2100.png',
     description: 'Independent tillage tool with individual shank control',
     price: '$165,000',
     parameters: {
@@ -1154,7 +1112,7 @@ export const equipment: Equipment[] = [
     name: 'Landoll 2310',
     brand: 'Landoll',
     category: 'tillers',
-    image: landoll2310,
+    image: '/images/Landoll 2310.png',
     description: 'Weatherproof disk chisel with hydraulic depth control',
     price: '$125,000',
     parameters: {
@@ -1185,7 +1143,7 @@ export const equipment: Equipment[] = [
     name: 'Sunflower 1435',
     brand: 'Sunflower',
     category: 'tillers',
-    image: sunflower1435,
+    image: '/images/Sunflower 1435.png',
     description: 'Heavy-duty disk harrow with cushion gang flexibility',
     price: '$110,000',
     parameters: {
@@ -1218,7 +1176,7 @@ export const equipment: Equipment[] = [
     name: 'John Deere 569',
     brand: 'John Deere',
     category: 'balers',
-    image: johnDeere569,
+    image: '/images/John Deere 569.png',
     description: 'Premium round baler with MegaWide Plus pickup and CoverEdge net wrap',
     price: '$85,000',
     parameters: {
@@ -1249,7 +1207,7 @@ export const equipment: Equipment[] = [
     name: 'New Holland BigBaler 1290',
     brand: 'New Holland',
     category: 'balers',
-    image: newHollandBigBaler1290,
+    image: '/images/New Holland BigBaler 1290.png',
     description: 'Large square baler with CropCutter chopping system',
     price: '$195,000',
     parameters: {
@@ -1280,7 +1238,7 @@ export const equipment: Equipment[] = [
     name: 'Case IH RB565',
     brand: 'Case IH',
     category: 'balers',
-    image: caseIhRB565,
+    image: '/images/Case IH RB565.png',
     description: 'Premium round baler with Active Pickup and Roto-Cut chopping',
     price: '$92,000',
     parameters: {
@@ -1311,7 +1269,7 @@ export const equipment: Equipment[] = [
     name: 'Massey Ferguson 2956A',
     brand: 'Massey Ferguson',
     category: 'balers',
-    image: masseyFerguson2956A,
+    image: '/images/Massey Ferguson 2956A.png',
     description: 'Large square baler with AccuBale density system',
     price: '$175,000',
     parameters: {
@@ -1342,7 +1300,7 @@ export const equipment: Equipment[] = [
     name: 'Kuhn LSB1290',
     brand: 'Kuhn',
     category: 'balers',
-    image: kuhnLSB1290,
+    image: '/images/Kuhn LSB1290.png',
     description: 'Large square baler with OptiCut chopping and IntelliWrap',
     price: '$210,000',
     parameters: {
@@ -1373,7 +1331,7 @@ export const equipment: Equipment[] = [
     name: 'Vermeer 605N',
     brand: 'Vermeer',
     category: 'balers',
-    image: vermeer605N,
+    image: '/images/Vermeer 605N.png',
     description: 'Net wrap round baler with MaxiSweep pickup and Auto Tie',
     price: '$78,000',
     parameters: {
