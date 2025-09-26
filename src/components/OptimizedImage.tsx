@@ -1,4 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+// 图片缓存管理
+const imageCache = new Map<string, string>();
+const preloadImage = (src: string): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    if (imageCache.has(src)) {
+      resolve(src);
+      return;
+    }
+
+    const img = new Image();
+    img.src = src;
+    img.onload = () => {
+      imageCache.set(src, src);
+      resolve(src);
+    };
+    img.onerror = reject;
+  });
+};
 
 interface OptimizedImageProps {
   src: string;
@@ -26,8 +45,35 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   onClick,
   loading = 'lazy'
 }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(imageCache.has(src));
   const [hasError, setHasError] = useState(false);
+  const [imageSrc, setImageSrc] = useState(imageCache.get(src) || src);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadImage = async () => {
+      if (!imageCache.has(src)) {
+        try {
+          await preloadImage(src);
+          if (isMounted) {
+            setImageSrc(src);
+            setIsLoaded(true);
+          }
+        } catch (error) {
+          if (isMounted) {
+            setHasError(true);
+          }
+        }
+      }
+    };
+
+    loadImage();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [src]);
 
   const placeholder = createPlaceholder();
 
@@ -58,7 +104,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       {/* 实际图片 */}
       {!hasError && (
         <img
-          src={src}
+          src={imageSrc}
           alt={alt}
           className={`w-full h-full object-cover transition-opacity duration-300 ${
             isLoaded ? 'opacity-100' : 'opacity-0'

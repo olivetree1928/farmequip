@@ -15,7 +15,21 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
   return (
     <div className="bg-white rounded-lg shadow-md p-6 mb-6">
       <h3 className="text-lg font-semibold text-gray-900 mb-4">Equipment Categories</h3>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        {/* All Categories Button */}
+        <button
+          onClick={() => onCategoryChange('')}
+          className={`flex flex-col items-center p-4 rounded-lg transition-all duration-200 ${
+            selectedCategory === ''
+              ? 'bg-green-100 border-2 border-green-500 text-green-700'
+              : 'bg-gray-50 hover:bg-gray-100 border-2 border-transparent text-gray-600'
+          }`}
+        >
+          <span className="text-2xl mb-2">🌟</span>
+          <span className="text-sm font-medium">All</span>
+          <span className="text-xs text-gray-500 mt-1">{categories.reduce((sum, cat) => sum + cat.count, 0)} units</span>
+        </button>
+        
         {categories.map((category) => (
           <button
             key={category.id}

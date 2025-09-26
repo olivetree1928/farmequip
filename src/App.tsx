@@ -8,7 +8,7 @@ import { trackSearch, trackCategoryFilter } from './utils/analytics';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('tractors');
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   // 预加载前几张图片
   useEffect(() => {
@@ -36,7 +36,7 @@ function App() {
         item.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.description.toLowerCase().includes(searchQuery.toLowerCase());
 
-      const matchesCategory = item.category === selectedCategory;
+      const matchesCategory = selectedCategory === '' || item.category === selectedCategory;
 
       return matchesSearch && matchesCategory;
     });

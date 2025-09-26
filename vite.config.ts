@@ -1,8 +1,9 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
   base: '/',
   optimizeDeps: {
@@ -24,17 +25,33 @@ export default defineConfig({
           ui: ['lucide-react'],
           data: ['./src/data/equipmentData'],
         },
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
       },
     },
-    assetsInlineLimit: 0, // 不内联任何资源，都作为文件处理
-    chunkSizeWarningLimit: 1500, // 增加chunk大小警告限制
-    target: 'es2015', // 更好的浏览器兼容性
-    minify: 'esbuild', // 使用esbuild进行快速压缩
+    assetsInlineLimit: 0,
+    chunkSizeWarningLimit: 1500,
+    target: 'es2015',
+    minify: 'esbuild',
+    sourcemap: true,
+    cssCodeSplit: true,
+    assetsDir: 'assets',
   },
   server: {
     // 开发服务器优化
     hmr: {
       overlay: false,
     },
+    headers: {
+      'Cache-Control': 'public, max-age=31536000',
+    },
   },
-});
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src')
+    }
+  },
+  define: {
+    'process.env.NODE_ENV': JSON.stringify(mode)
+  }
+}));
