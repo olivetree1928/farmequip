@@ -27,15 +27,10 @@ interface OptimizedImageProps {
   loading?: 'lazy' | 'eager';
 }
 
-// 简化的占位符
+// 简化的占位符 - 使用安全的方式创建
 const createPlaceholder = () => {
-  return `data:image/svg+xml;base64,${btoa(`
-    <svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
-      <rect width="100%" height="100%" fill="#f3f4f6"/>
-      <circle cx="200" cy="150" r="30" fill="#d1d5db" opacity="0.6"/>
-      <rect x="185" y="135" width="30" height="30" fill="#9ca3af" opacity="0.8"/>
-    </svg>
-  `)}`;
+  // 使用内联SVG而不是base64编码，避免btoa兼容性问题
+  return `data:image/svg+xml,%3Csvg width="400" height="300" xmlns="http://www.w3.org/2000/svg"%3E%3Crect width="100%" height="100%" fill="%23f3f4f6"/%3E%3Ccircle cx="200" cy="150" r="30" fill="%23d1d5db" opacity="0.6"/%3E%3Crect x="185" y="135" width="30" height="30" fill="%239ca3af" opacity="0.8"/%3E%3C/svg%3E`;
 };
 
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
