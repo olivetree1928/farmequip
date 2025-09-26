@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-// 图片缓存管理
-const imageCache = new Map<string, string>();
+// 图片缓存管理 - 使用安全的方式实现缓存
+const imageCache: Record<string, string> = {};
 const preloadImage = (src: string): Promise<string> => {
   return new Promise((resolve, reject) => {
-    if (imageCache.has(src)) {
+    if (imageCache[src]) {
       resolve(src);
       return;
     }
@@ -12,7 +12,7 @@ const preloadImage = (src: string): Promise<string> => {
     const img = new Image();
     img.src = src;
     img.onload = () => {
-      imageCache.set(src, src);
+      imageCache[src] = src;
       resolve(src);
     };
     img.onerror = reject;
@@ -45,15 +45,15 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   onClick,
   loading = 'lazy'
 }) => {
-  const [isLoaded, setIsLoaded] = useState(imageCache.has(src));
+  const [isLoaded, setIsLoaded] = useState(!!imageCache[src]);
   const [hasError, setHasError] = useState(false);
-  const [imageSrc, setImageSrc] = useState(imageCache.get(src) || src);
+  const [imageSrc, setImageSrc] = useState(imageCache[src] || src);
 
   useEffect(() => {
     let isMounted = true;
 
     const loadImage = async () => {
-      if (!imageCache.has(src)) {
+      if (!imageCache[src]) {
         try {
           await preloadImage(src);
           if (isMounted) {

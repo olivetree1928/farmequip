@@ -18,6 +18,8 @@ function App() {
         .slice(0, 3)
         .map(item => item.image);
 
+      // 使用 OptimizedImage 组件中的预加载函数
+      // 这里只是预热图片，不需要处理结果
       firstFewImages.forEach(src => {
         const img = new Image();
         img.src = src;
