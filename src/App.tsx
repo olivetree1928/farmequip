@@ -8,7 +8,7 @@ import { trackSearch, trackCategoryFilter } from './utils/analytics';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('tractors'); // 默认显示拖拉机分类，不再显示所有设备
 
   // 预加载前几张图片
   useEffect(() => {
@@ -38,7 +38,7 @@ function App() {
         item.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.description.toLowerCase().includes(searchQuery.toLowerCase());
 
-      const matchesCategory = selectedCategory === '' || item.category === selectedCategory;
+      const matchesCategory = item.category === selectedCategory; // 必须匹配选中的分类，不再支持显示所有设备
 
       return matchesSearch && matchesCategory;
     });
