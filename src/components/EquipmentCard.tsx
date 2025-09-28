@@ -29,13 +29,16 @@ const EquipmentCard: React.FC<EquipmentCardProps> = ({ equipment }) => {
 
   return (
     <>
-      <div className="equipment-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+      <div className="equipment-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" 
+           itemScope 
+           itemType="https://schema.org/Product">
         <div className="card-image-container relative">
           <OptimizedImage
             src={equipment.image}
             alt={equipment.name}
             className="w-full h-full cursor-pointer hover:opacity-90 transition-opacity"
             onClick={handleImageClick}
+            itemProp="image"
           />
           <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all cursor-pointer flex items-center justify-center"
                onClick={handleImageClick}>
@@ -44,14 +47,14 @@ const EquipmentCard: React.FC<EquipmentCardProps> = ({ equipment }) => {
             </div>
           </div>
         <div className="absolute top-4 right-4">
-          <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+          <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium" itemProp="brand">
             {equipment.brand}
           </span>
         </div>
         {equipment.price && (
           <div className="absolute bottom-4 left-4">
-            <span className="bg-black bg-opacity-70 text-white px-3 py-1 rounded-lg text-sm font-semibold">
-              {equipment.price}
+            <span className="bg-black bg-opacity-70 text-white px-3 py-1 rounded-lg text-sm font-semibold" itemProp="offers" itemScope itemType="https://schema.org/Offer">
+              <span itemProp="price">{equipment.price}</span>
             </span>
           </div>
         )}
@@ -59,13 +62,13 @@ const EquipmentCard: React.FC<EquipmentCardProps> = ({ equipment }) => {
       
       <div className="p-6">
         <div className="flex justify-between items-start mb-3">
-          <h3 className="text-xl font-bold text-gray-900">{equipment.name}</h3>
+          <h3 className="text-xl font-bold text-gray-900" itemProp="name">{equipment.name}</h3>
           <button className="text-green-600 hover:text-green-700 p-1">
             <ExternalLink className="w-5 h-5" />
           </button>
         </div>
         
-        <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+        <p className="text-gray-600 text-sm mb-4 line-clamp-2" itemProp="description">
           {equipment.description}
         </p>
 

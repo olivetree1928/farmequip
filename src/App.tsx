@@ -3,6 +3,7 @@ import Header from './components/Header';
 import CategoryFilter from './components/CategoryFilter';
 import EquipmentGrid from './components/EquipmentGrid';
 import Stats from './components/Stats';
+import SEO from './components/SEO';
 import { equipment, categories } from './data/equipmentData';
 import { trackSearch, trackCategoryFilter } from './utils/analytics';
 
@@ -59,6 +60,11 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO 
+        equipment={filteredEquipment}
+        selectedCategory={selectedCategory}
+        searchQuery={searchQuery}
+      />
       <Header
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}

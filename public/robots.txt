@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://farmequip-database.vercel.app/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Allow all search engines to index the site
+# Disallow crawling of any admin or private areas (none currently)
+
+# Allow indexing of images
+User-agent: Googlebot-Image
+Allow: /images/
+
+# Allow indexing of all content for major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
