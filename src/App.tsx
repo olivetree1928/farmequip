@@ -1,15 +1,23 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Header from './components/Header';
 import CategoryFilter from './components/CategoryFilter';
 import EquipmentGrid from './components/EquipmentGrid';
 import Stats from './components/Stats';
 import SEO from './components/SEO';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/TermsOfService';
+import UsedEquipmentPage from './components/UsedEquipmentPage';
+import RentalEquipmentPage from './components/RentalEquipmentPage';
+import { Equipment } from './types/equipment';
 import { equipment, categories } from './data/equipmentData';
 import { trackSearch, trackCategoryFilter } from './utils/analytics';
 
 function App() {
+  const [currentPage, setCurrentPage] = useState<'new' | 'used' | 'rental'>('new');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('tractors'); // 默认显示拖拉机分类，不再显示所有设备
+  const [isPrivacyPolicyOpen, setIsPrivacyPolicyOpen] = useState(false);
+  const [isTermsOfServiceOpen, setIsTermsOfServiceOpen] = useState(false);
 
   // 预加载前几张图片
   useEffect(() => {
@@ -70,17 +78,62 @@ function App() {
         onSearchChange={setSearchQuery}
       />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Stats />
+      {/* Page Navigation */}
+      <div className="bg-white shadow-sm border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="flex space-x-8">
+            <button
+              onClick={() => setCurrentPage('new')}
+              className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                currentPage === 'new'
+                  ? 'border-green-500 text-green-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+            >
+              New Equipment
+            </button>
+            <button
+              onClick={() => setCurrentPage('used')}
+              className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                currentPage === 'used'
+                  ? 'border-green-500 text-green-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+            >
+              Used Equipment
+            </button>
+            <button
+              onClick={() => setCurrentPage('rental')}
+              className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                currentPage === 'rental'
+                  ? 'border-green-500 text-green-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+            >
+              Equipment Rental
+            </button>
+          </nav>
+        </div>
+      </div>
 
-        <CategoryFilter
-          categories={categories}
-          selectedCategory={selectedCategory}
-          onCategoryChange={handleCategoryChange}
-        />
+      {/* Conditional Page Rendering */}
+      {currentPage === 'new' ? (
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <Stats />
 
-        <EquipmentGrid equipment={filteredEquipment} />
-      </main>
+          <CategoryFilter
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onCategoryChange={handleCategoryChange}
+          />
+
+          <EquipmentGrid equipment={filteredEquipment} />
+        </main>
+      ) : currentPage === 'used' ? (
+        <UsedEquipmentPage />
+      ) : (
+        <RentalEquipmentPage />
+      )}
 
       <footer className="bg-gray-800 text-white py-12 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -97,17 +150,17 @@ function App() {
                 <li><a href="#" className="hover:text-green-400 transition-colors">Equipment Comparison</a></li>
                 <li><a href="#" className="hover:text-green-400 transition-colors">Technical Documentation</a></li>
                 <li><a href="#" className="hover:text-green-400 transition-colors">Price Inquiry</a></li>
-                <li><a href="#" className="hover:text-green-400 transition-colors">Contact Us</a></li>
+                <li><button onClick={() => setIsPrivacyPolicyOpen(true)} className="hover:text-green-400 transition-colors text-left bg-transparent border-none p-0 text-gray-300 text-sm cursor-pointer">Privacy Policy</button></li>
+                <li><button onClick={() => setIsTermsOfServiceOpen(true)} className="hover:text-green-400 transition-colors text-left bg-transparent border-none p-0 text-gray-300 text-sm cursor-pointer">Terms of Service</button></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Contact Information</h3>
+              <h3 className="text-lg font-semibold mb-4">Advertisement</h3>
               <div className="text-sm text-gray-300 space-y-2">
                 <p>Customer Service: 1-800-AGRITECH</p>
                 <p>Email: mitdream2028@gmail.com</p>
                 <p>Hours: Monday-Friday 8:00 AM - 6:00 PM EST</p>
                 <p>We invite you to place your advertisement with us!</p>
-
               </div>
             </div>
           </div>
@@ -116,6 +169,16 @@ function App() {
           </div>
         </div>
       </footer>
+      
+      <PrivacyPolicy 
+        isOpen={isPrivacyPolicyOpen} 
+        onClose={() => setIsPrivacyPolicyOpen(false)} 
+      />
+      
+      <TermsOfService 
+        isOpen={isTermsOfServiceOpen} 
+        onClose={() => setIsTermsOfServiceOpen(false)} 
+      />
     </div>
   );
 }
