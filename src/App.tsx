@@ -140,9 +140,9 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <h3 className="text-lg font-semibold mb-4">About Us</h3>
-              <p className="text-gray-300 text-sm">
-                US AgriTech Database is dedicated to providing the most authoritative and detailed technical specifications for American agricultural equipment to farming professionals worldwide.
-              </p>
+              <div className="text-gray-300 text-sm space-y-2">
+                <p>US AgriTech Database provides comprehensive and authoritative agricultural equipment specifications, detailed technical data, used equipment marketplace, and rental listings for farming professionals and agricultural businesses worldwide.</p>
+              </div>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
@@ -150,17 +150,20 @@ function App() {
                 <li><a href="#" className="hover:text-green-400 transition-colors">Equipment Comparison</a></li>
                 <li><a href="#" className="hover:text-green-400 transition-colors">Technical Documentation</a></li>
                 <li><a href="#" className="hover:text-green-400 transition-colors">Price Inquiry</a></li>
-                <li><button onClick={() => setIsPrivacyPolicyOpen(true)} className="hover:text-green-400 transition-colors text-left bg-transparent border-none p-0 text-gray-300 text-sm cursor-pointer">Privacy Policy</button></li>
-                <li><button onClick={() => setIsTermsOfServiceOpen(true)} className="hover:text-green-400 transition-colors text-left bg-transparent border-none p-0 text-gray-300 text-sm cursor-pointer">Terms of Service</button></li>
+                <li><a href="#" className="hover:text-green-400 transition-colors">Equipment Categories</a></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Advertisement</h3>
+              <h3 className="text-lg font-semibold mb-4">Customer Service</h3>
               <div className="text-sm text-gray-300 space-y-2">
-                <p>Customer Service: 1-800-AGRITECH</p>
+                <p>Phone: 1-800-AGRITECH</p>
                 <p>Email: mitdream2028@gmail.com</p>
                 <p>Hours: Monday-Friday 8:00 AM - 6:00 PM EST</p>
-                <p>We invite you to place your advertisement with us!</p>
+                <div className="flex space-x-4 mt-3">
+                  <button onClick={() => setIsPrivacyPolicyOpen(true)} className="hover:text-green-400 transition-colors bg-transparent border-none p-0 text-gray-300 text-sm cursor-pointer">Privacy Policy</button>
+                  <span className="text-gray-500">|</span>
+                  <button onClick={() => setIsTermsOfServiceOpen(true)} className="hover:text-green-400 transition-colors bg-transparent border-none p-0 text-gray-300 text-sm cursor-pointer">Terms of Service</button>
+                </div>
               </div>
             </div>
           </div>
