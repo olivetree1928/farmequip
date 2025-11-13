@@ -143,11 +143,13 @@ const UsedEquipmentPage: React.FC = () => {
           </div>
 
           {/* Category Filter */}
-          <CategoryFilter
-            categories={[{ id: 'all', name: 'All Categories', icon: '🔍', count: usedEquipment.length }, ...usedEquipmentCategories]}
-            selectedCategory={selectedCategory}
-            onCategoryChange={setSelectedCategory}
-          />
+          <section id="used-categories">
+            <CategoryFilter
+              categories={[{ id: 'all', name: 'All Categories', icon: '🔍', count: usedEquipment.length }, ...usedEquipmentCategories]}
+              selectedCategory={selectedCategory}
+              onCategoryChange={setSelectedCategory}
+            />
+          </section>
 
           {/* Advanced Filters */}
           {showFilters && (
@@ -264,7 +266,50 @@ const UsedEquipmentPage: React.FC = () => {
         </div>
 
         {/* Results */}
-        <UsedEquipmentGrid equipment={filteredEquipment} />
+        <section id="used-equipment-catalog">
+          <UsedEquipmentGrid equipment={filteredEquipment} />
+        </section>
+
+        <section id="used-equipment-guide" className="mt-12 prose prose-green max-w-none">
+          <h2 className="text-2xl font-semibold">Used Equipment Buying Guide</h2>
+          <p>
+            Buying pre-owned agricultural machinery requires structured inspection and documentation. The goal is to verify mechanical integrity, 
+            reduce downtime risk, and forecast ownership cost. Use the checklist below before making an offer, and capture photos or short videos 
+            for each step to create your own records. This approach improves negotiation leverage and long-term maintenance planning.
+          </p>
+          <h3 className="text-xl font-semibold">Mechanical Inspection</h3>
+          <ul className="list-disc ml-6">
+            <li>Engine: cold start, blow-by, oil analysis, and coolant condition.</li>
+            <li>Transmission/Driveline: shift quality, noise, clutch wear, hydraulic leaks.</li>
+            <li>PTO and Hydraulics: PTO engagement, remotes function, flow and pressure stability.</li>
+            <li>Undercarriage/Tires: tread depth, sidewall cracks, track wear, alignment.</li>
+            <li>Electrical: lighting, sensors, diagnostic codes, battery and alternator health.</li>
+          </ul>
+          <h3 className="text-xl font-semibold">Documentation & History</h3>
+          <ul className="list-disc ml-6">
+            <li>VIN/Serial verification; confirm model year against manufacturer records.</li>
+            <li>Service logs and parts invoices; check interval adherence for filters and fluids.</li>
+            <li>Ownership chain and usage profile (row crops vs. heavy tillage vs. transport).</li>
+            <li>Accident or major repair history; ask for before/after photos where possible.</li>
+          </ul>
+          <h3 className="text-xl font-semibold">Cost Model</h3>
+          <p>
+            Estimate annual total cost: depreciation + fuel + scheduled maintenance + wear parts + contingency. 
+            For combines and balers, account for seasonal peak wear. Build a reserve fund equal to one major repair.
+          </p>
+        </section>
+
+        <section id="used-equipment-checklist" className="mt-8 prose prose-green max-w-none">
+          <h2 className="text-2xl font-semibold">Inspection Checklist (Printable Summary)</h2>
+          <p>Use this condensed list during on-site inspection:</p>
+          <ol className="list-decimal ml-6">
+            <li>Start-up test and idle stabilization within 60 seconds.</li>
+            <li>Hydraulic leak check: wipe fittings; observe drips after 10 minutes.</li>
+            <li>PTO load test with implement (if available), confirm engagement and noise.</li>
+            <li>Brake and steering response on gravel and paved surfaces.</li>
+            <li>Diagnostic scan: export codes; verify no active critical faults.</li>
+          </ol>
+        </section>
       </div>
     </div>
   );

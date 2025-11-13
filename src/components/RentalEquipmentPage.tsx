@@ -232,7 +232,47 @@ const RentalEquipmentPage: React.FC = () => {
       </div>
 
       {/* Equipment Grid */}
-      <RentalEquipmentGrid equipment={filteredEquipment} />
+      <section id="rental-equipment-catalog">
+        <RentalEquipmentGrid equipment={filteredEquipment} />
+      </section>
+
+      <section id="rental-guide" className="mt-12 prose prose-green max-w-none">
+        <h2 className="text-2xl font-semibold">Rental Guide: Selecting and Using Hired Equipment</h2>
+        <p>
+          Renting agricultural machines is ideal for short, weather‑critical windows or specialized tasks. Focus on availability, transport,
+          and on‑site support. The following guidance helps reduce operational risk and ensures you meet agronomic targets without unnecessary cost.
+        </p>
+        <h3 className="text-xl font-semibold">Choosing the Right Rental</h3>
+        <ul className="list-disc ml-6">
+          <li>Match implement width and required PTO/hydraulic specs to your tractor.</li>
+          <li>Check boom stability for sprayers and section control for precision application.</li>
+          <li>For tillage, confirm working depth consistency and transport safety requirements.</li>
+          <li>Confirm tire type or track configuration to protect soil under current moisture.</li>
+        </ul>
+        <h3 className="text-xl font-semibold">Logistics & Support</h3>
+        <ul className="list-disc ml-6">
+          <li>Delivery lead time and road permits if applicable; verify insurance coverage.</li>
+          <li>Operator training or handover checklist; request quick‑start settings per crop.</li>
+          <li>Service plan during rental: contact window, spare parts availability, and SLA.</li>
+          <li>Fuel, cleaning, and return condition policy; document photos before and after.</li>
+        </ul>
+        <h3 className="text-xl font-semibold">Cost Control</h3>
+        <p>
+          Compare daily rate versus productivity per hour. Include transport, setup, cleaning, and potential downtime in your budget. For long 
+          rentals, ask for weekly caps and maintenance inclusions. Keep a log of field hours, fuel, and acres covered for future decisions.
+        </p>
+      </section>
+
+      <section id="rental-checklist" className="mt-8 prose prose-green max-w-none">
+        <h2 className="text-2xl font-semibold">Rental Checklist (Before Delivery)</h2>
+        <ol className="list-decimal ml-6">
+          <li>Confirm model, header/implement size, and required specs match your tractor.</li>
+          <li>Schedule delivery and ensure access; prep fuel and storage area.</li>
+          <li>Agree on contact for breakdowns and expected response time.</li>
+          <li>Record initial condition with photos; note tire pressures and settings.</li>
+          <li>Collect operating manual or quick‑start sheet for the specific model.</li>
+        </ol>
+      </section>
     </div>
   );
 };

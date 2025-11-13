@@ -121,13 +121,77 @@ function App() {
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Stats />
 
-          <CategoryFilter
-            categories={categories}
-            selectedCategory={selectedCategory}
-            onCategoryChange={handleCategoryChange}
-          />
+          <section id="equipment-categories">
+            <CategoryFilter
+              categories={categories}
+              selectedCategory={selectedCategory}
+              onCategoryChange={handleCategoryChange}
+            />
+          </section>
 
-          <EquipmentGrid equipment={filteredEquipment} />
+          <section
+             id="equipment-grid"
+             aria-live="polite"
+           >
+             <EquipmentGrid equipment={filteredEquipment} />
+           </section>
+
+          <section id="technical-documentation" className="mt-12 prose prose-green max-w-none">
+            <h2 className="text-2xl font-semibold">Technical Documentation: Understanding Core Specifications</h2>
+            <p>
+              Selecting agricultural machinery requires more than brand familiarity. This guide explains the meaning and trade‑offs behind key
+              specifications used across tractors, harvesters, planters, sprayers, and tillage equipment. It is written for farming professionals
+              and agricultural businesses who want practical, field‑tested decision frameworks rather than superficial marketing descriptions.
+            </p>
+            <h3 className="text-xl font-semibold">Engine Power vs. PTO Power</h3>
+            <p>
+              Engine horsepower reflects the raw output at the crankshaft, while <strong>PTO horsepower</strong> measures usable power delivered to implements.
+              For balers, mowers, and grain augers, PTO is the limiting factor; for heavy drawbar tillage, torque curves and weight balance matter more
+              than peak horsepower. Always match PTO requirements with at least a 10–15% margin to account for altitude, temperature, and wear.
+            </p>
+            <h3 className="text-xl font-semibold">Hydraulic Flow and Remote Valves</h3>
+            <p>
+              Hydraulic capacity determines how quickly implements lift, fold, and cycle. Compare total flow (L/min or gpm) and the number of remotes.
+              Modern planters and air seeders may need load‑sense systems; sprayers benefit from closed‑center hydraulics to prevent pressure drop when
+              multiple functions operate simultaneously.
+            </p>
+            <h3 className="text-xl font-semibold">Weight, Tires, and Soil Compaction</h3>
+            <p>
+              Operating weight influences traction and soil health. Duals or IF/VF tires reduce ground pressure compared to standard radials. When
+              working in wet conditions, prioritize flotation over speed. Compaction penalties accumulate season to season; aim for a balanced axle load
+              and consider central tire inflation systems to optimize footprint in-field versus road transport.
+            </p>
+            <h3 className="text-xl font-semibold">Combine Capacity and Header Matching</h3>
+            <p>
+              Combine performance depends on matching header width to crop type and residue management. Oversized headers lead to grain loss when
+              cleaning shoe and rotor settings cannot keep up. For corn, evaluate chopper power draw; for small grains, sample tailings regularly to
+              tune pre‑cleaner and sieve settings.
+            </p>
+            <h3 className="text-xl font-semibold">Ownership Cost Model</h3>
+            <p>
+              Beyond purchase price, calculate fuel, maintenance intervals, wearable parts (chains, knives, bushings), and expected resale value.
+              A simple rule of thumb: annual cost ≈ depreciation + fuel + scheduled maintenance + downtime risk. Used and rental options can
+              reduce capital load if utilization is seasonal.
+            </p>
+          </section>
+
+          <section id="equipment-comparison" className="mt-12 prose prose-green max-w-none">
+            <h2 className="text-2xl font-semibold">Equipment Comparison: Practical Selection Frameworks</h2>
+            <p>
+              Start with the agronomic job to be done and field constraints (soil type, slope, moisture window). Choose implement width based on
+              tractor PTO and hydraulic capacity, then compare models by productivity per hour, fuel per hectare, and service access.
+            </p>
+            <ul className="list-disc ml-6">
+              <li><strong>Tractors:</strong> Compare PTO power, hydraulic flow, transmission type (powershift/CVT), and drawbar pull.</li>
+              <li><strong>Planters/Seeders:</strong> Evaluate seed delivery, down‑force control, section shutoff, and fertilizer integration.</li>
+              <li><strong>Sprayers:</strong> Consider boom stability, nozzle control, turn compensation, and clean‑out procedures.</li>
+              <li><strong>Tillage:</strong> Match tool to residue and moisture; compare working depth stability and transport safety.</li>
+            </ul>
+            <p>
+              Document your own test notes for each machine and keep service records. Over time this creates original, high‑value content for your
+              operation and helps validate our database recommendations.
+            </p>
+          </section>
         </main>
       ) : currentPage === 'used' ? (
         <UsedEquipmentPage />
@@ -147,10 +211,10 @@ function App() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2 text-sm text-gray-300">
-                <li><a href="#" className="hover:text-green-400 transition-colors">Equipment Comparison</a></li>
-                <li><a href="#" className="hover:text-green-400 transition-colors">Technical Documentation</a></li>
-                <li><a href="#" className="hover:text-green-400 transition-colors">Price Inquiry</a></li>
-                <li><a href="#" className="hover:text-green-400 transition-colors">Equipment Categories</a></li>
+                <li><a href="#equipment-comparison" className="hover:text-green-400 transition-colors">Equipment Comparison</a></li>
+                <li><a href="#technical-documentation" className="hover:text-green-400 transition-colors">Technical Documentation</a></li>
+                <li><a href="mailto:mitdream2028@gmail.com?subject=Price%20Inquiry&body=Please%20include%20equipment%20model%20and%20requirements." className="hover:text-green-400 transition-colors">Price Inquiry</a></li>
+                <li><a href="#equipment-categories" className="hover:text-green-400 transition-colors">Equipment Categories</a></li>
               </ul>
             </div>
             <div>

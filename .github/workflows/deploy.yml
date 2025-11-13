@@ -32,6 +32,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
         
+      - name: Set BASE_PATH for GitHub Pages
+        run: |
+          REPO="${{ github.event.repository.name }}"
+          OWNER="${{ github.repository_owner }}"
+          if [ "$REPO" = "${OWNER}.github.io" ]; then
+            echo "BASE_PATH=/" >> $GITHUB_ENV
+          else
+            echo "BASE_PATH=/${REPO}/" >> $GITHUB_ENV
+          fi
+        
       - name: Build
         run: npm run build
         

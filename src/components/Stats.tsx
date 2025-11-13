@@ -33,10 +33,17 @@ const Stats: React.FC = () => {
     <div className="bg-gradient-to-r from-green-600 to-green-700 text-white py-12 mb-8 rounded-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold mb-4">Professional Agricultural Equipment Database</h2>
-          <p className="text-green-100 max-w-2xl mx-auto">
-            Providing the most comprehensive and accurate technical specifications for American agricultural equipment to support modern farming operations
+          <h2 className="text-3xl font-bold mb-3">Professional Agricultural Equipment Database</h2>
+          <p className="text-green-100 max-w-3xl mx-auto leading-relaxed">
+            <span className="block sm:inline">Comprehensive, accurate technical specifications for U.S. agricultural equipment</span>
+            <br className="hidden sm:block" />
+            <span className="block sm:inline">Empowering modern, data‑driven farming operations</span>
           </p>
+          <div className="flex flex-wrap justify-center gap-2 mt-4" aria-label="Key features">
+            <span className="px-3 py-1 rounded-full bg-white/10 text-white text-sm">Verified specs</span>
+            <span className="px-3 py-1 rounded-full bg-white/10 text-white text-sm">Comparison & guidance</span>
+            <span className="px-3 py-1 rounded-full bg-white/10 text-white text-sm">Used & rental listings</span>
+          </div>
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
