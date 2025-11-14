@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://farmequip-database.vercel.app/sitemap.xml
+Sitemap: https://agrieq.farm/sitemap.xml
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1
