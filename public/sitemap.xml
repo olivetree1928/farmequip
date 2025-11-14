@@ -6,7 +6,7 @@
   
   <!-- Homepage -->
   <url>
-    <loc>https://farmequip-database.vercel.app/</loc>
+    <loc>https://agrieq.farm/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -14,42 +14,42 @@
   
   <!-- Category Pages -->
   <url>
-    <loc>https://farmequip-database.vercel.app/?category=tractors</loc>
+    <loc>https://agrieq.farm/?category=tractors</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://farmequip-database.vercel.app/?category=harvesters</loc>
+    <loc>https://agrieq.farm/?category=harvesters</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://farmequip-database.vercel.app/?category=planters</loc>
+    <loc>https://agrieq.farm/?category=planters</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://farmequip-database.vercel.app/?category=tillage</loc>
+    <loc>https://agrieq.farm/?category=tillage</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://farmequip-database.vercel.app/?category=sprayers</loc>
+    <loc>https://agrieq.farm/?category=sprayers</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://farmequip-database.vercel.app/?category=balers</loc>
+    <loc>https://agrieq.farm/?category=balers</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
