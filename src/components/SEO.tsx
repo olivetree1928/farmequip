@@ -12,28 +12,40 @@ const SEO: React.FC<SEOProps> = ({ equipment, selectedCategory, searchQuery }) =
   const generateEquipmentStructuredData = () => {
     if (!equipment || equipment.length === 0) return null;
 
-    const products = equipment.slice(0, 10).map(item => ({
-      "@type": "Product",
-      "name": item.name,
-      "description": item.description,
-      "brand": {
-        "@type": "Brand",
-        "name": item.brand
-      },
-      "category": item.category,
-      "image": `https://farmequip-database.vercel.app${item.image}`,
-      "offers": item.price ? {
-        "@type": "Offer",
-        "price": item.price.replace(/[^0-9]/g, ''),
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock"
-      } : undefined,
-      "additionalProperty": Object.entries(item.parameters).map(([key, value]) => ({
-        "@type": "PropertyValue",
-        "name": key,
-        "value": value
-      }))
-    }));
+    const products = equipment.slice(0, 10).map(item => {
+      const imageUrl = new URL(item.image, 'https://agrieq.farm').toString();
+      const productUrl = `https://agrieq.farm/#product-${encodeURIComponent(item.id)}`;
+
+      return {
+        "@type": "Product",
+        "name": item.name,
+        "description": item.description,
+        "brand": {
+          "@type": "Brand",
+          "name": item.brand
+        },
+        "category": item.category,
+        // Use encoded absolute image URL under primary domain
+        "image": imageUrl,
+        // Provide additional recommended properties
+        "sku": item.id,
+        "url": productUrl,
+        "itemCondition": "https://schema.org/NewCondition",
+        // Offers block: ensure numeric price and include currency/availability
+        "offers": item.price ? {
+          "@type": "Offer",
+          "price": parseFloat(item.price.replace(/[^0-9.]/g, '')),
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": productUrl
+        } : undefined,
+        "additionalProperty": Object.entries(item.parameters).map(([key, value]) => ({
+          "@type": "PropertyValue",
+          "name": key,
+          "value": value
+        }))
+      };
+    });
 
     return {
       "@context": "https://schema.org",
@@ -56,7 +68,7 @@ const SEO: React.FC<SEOProps> = ({ equipment, selectedCategory, searchQuery }) =
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://farmequip-database.vercel.app"
+        "item": "https://agrieq.farm"
       }
     ];
 
@@ -65,7 +77,7 @@ const SEO: React.FC<SEOProps> = ({ equipment, selectedCategory, searchQuery }) =
         "@type": "ListItem",
         "position": 2,
         "name": selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1),
-        "item": `https://farmequip-database.vercel.app?category=${selectedCategory}`
+        "item": `https://agrieq.farm?category=${encodeURIComponent(selectedCategory)}`
       });
     }
 
@@ -74,7 +86,7 @@ const SEO: React.FC<SEOProps> = ({ equipment, selectedCategory, searchQuery }) =
         "@type": "ListItem",
         "position": breadcrumbs.length + 1,
         "name": `Search: ${searchQuery}`,
-        "item": `https://farmequip-database.vercel.app?search=${encodeURIComponent(searchQuery)}`
+        "item": `https://agrieq.farm?search=${encodeURIComponent(searchQuery)}`
       });
     }
 
